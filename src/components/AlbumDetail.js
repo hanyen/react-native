@@ -6,6 +6,9 @@ import Button from './Button';
 
 const AlbumDetail = (props) => {
 
+  //destructure the props
+  const { thumbnail_image, title, artist, image, url } = props.album;
+
   //destructure the style objects
   const { headerContentStyle, 
           thumbnailStyle, 
@@ -18,20 +21,20 @@ const AlbumDetail = (props) => {
   <Card>
     <CardSection>
       <View style={thumbnailContainerStyle}>
-        <Image style={thumbnailStyle} source={{ uri: props.album.thumbnail_image, }} />
+        <Image style={thumbnailStyle} source={{ uri: thumbnail_image, }} />
       </View>
       <View style={headerContentStyle}>
-        <Text style={headerTextStyle}>{props.album.title}</Text>
+        <Text style={headerTextStyle}>{title}</Text>
         <Text>{props.album.artist}</Text>
       </View>
     </CardSection>
 
     <CardSection>
-      <Image style={imageStyle} source={{ uri: props.album.image, }} />
+      <Image style={imageStyle} source={{ uri: image, }} />
     </CardSection>
     
     <CardSection>
-      <Button onPress={() => Linking.openURL(props.album.url) }>
+      <Button onPress={() => Linking.openURL(url) }>
         Buy Now
       </Button>
     </CardSection>
